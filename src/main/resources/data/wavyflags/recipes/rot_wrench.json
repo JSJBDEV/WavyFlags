@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "wrench",
+  "ingredients": [
+
+    {"item": "minecraft:item_frame"},
+    {"item": "minecraft:stick"},
+    {"item": "minecraft:iron_ingot"}
+
+  ],
+  "result": {
+    "item": "wavyflags:rot"
+  }
+}

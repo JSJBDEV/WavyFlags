@@ -1,0 +1,10 @@
+{
+  "item.wavyflags.rot": "Flag Rotation Wrench",
+  "item.wavyflags.slow": "Flag Slowness Wrench",
+  "item.wavyflags.ecc": "Flag Eccentricity Wrench",
+  "item.wavyflags.off": "Flag Offset Wrench",
+  "block.wavyflags.flag_block": "Flag Block",
+  "itemGroup.wavyflags": "Wavy Flags :)",
+
+  "wf.wrench.text": "Use on a flag block to modify it!"
+}

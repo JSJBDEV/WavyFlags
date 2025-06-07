@@ -4,6 +4,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
 import net.minecraft.registry.Registries;
@@ -29,23 +30,27 @@ public class FlagBlock extends BlockWithEntity {
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if(!world.isClient && hand==Hand.MAIN_HAND)
         {
-            NbtList list = new NbtList();
-            for (int i = 0; i < 10; i++) {
-                for (int j = 0; j < 10; j++) {
-                    for (int k = 0; k > -5; k--) {
-                        if(world.getBlockState(pos.add(i,j,k)).isIn(BlockTags.WOOL))
-                        {
-                            NbtCompound block = new NbtCompound();
-                            block.putIntArray("pos",new int[]{i,j,k});
-                            block.putString("id", Registries.BLOCK.getId(world.getBlockState(pos.add(i,j,k)).getBlock()).toString());
-                            list.add(block);
+            FlagBlockEntity be = (FlagBlockEntity) world.getBlockEntity(pos);
+            if(player.getStackInHand(hand).isEmpty())
+            {
+                NbtList list = new NbtList();
+                for (int i = 0; i < 10; i++) {
+                    for (int j = 0; j < 10; j++) {
+                        for (int k = -5; k < 5; k++) {
+                            if(world.getBlockState(pos.add(i,j,k)).isIn(BlockTags.WOOL))
+                            {
+                                NbtCompound block = new NbtCompound();
+                                block.putIntArray("pos",new int[]{i,j,k});
+                                block.putString("id", Registries.BLOCK.getId(world.getBlockState(pos.add(i,j,k)).getBlock()).toString());
+                                list.add(block);
+                            }
                         }
                     }
                 }
+
+                be.setList(list);
+                world.updateListeners(pos, state, state, 0);
             }
-            FlagBlockEntity be = (FlagBlockEntity) world.getBlockEntity(pos);
-            be.setList(list);
-            world.updateListeners(pos, state, state, 0);
         }
 
         return super.onUse(state, world, pos, player, hand, hit);

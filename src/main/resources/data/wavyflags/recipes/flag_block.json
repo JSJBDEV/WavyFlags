@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "flag",
+  "ingredients": [
+
+    {"item": "minecraft:item_frame"},
+    {"item": "minecraft:stone"},
+    {"item": "minecraft:redstone"}
+
+  ],
+  "result": {
+    "item": "wavyflags:flag_block"
+  }
+}
