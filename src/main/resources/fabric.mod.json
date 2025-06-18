@@ -8,11 +8,11 @@
 		"Acrogenous"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://github.com/jsjbdev/wavyflags",
+		"sources": "https://github.com/jsjbdev/wavyflags"
 	},
 	"license": "MIT",
-	"icon": "assets/wavyflags/icon.png",
+	"icon": "assets/wavyflags/icon.gif",
 	"environment": "*",
 	"entrypoints": {
 		"main": [

@@ -6,6 +6,7 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.nbt.NbtHelper;
 import net.minecraft.nbt.NbtList;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.tag.BlockTags;
@@ -37,13 +38,10 @@ public class FlagBlock extends BlockWithEntity {
                 for (int i = 0; i < 10; i++) {
                     for (int j = 0; j < 10; j++) {
                         for (int k = -5; k < 5; k++) {
-                            if(world.getBlockState(pos.add(i,j,k)).isIn(BlockTags.WOOL))
-                            {
-                                NbtCompound block = new NbtCompound();
-                                block.putIntArray("pos",new int[]{i,j,k});
-                                block.putString("id", Registries.BLOCK.getId(world.getBlockState(pos.add(i,j,k)).getBlock()).toString());
-                                list.add(block);
-                            }
+                            NbtCompound block = new NbtCompound();
+                            block.putIntArray("pos",new int[]{i,j,k});
+                            block.put("state", NbtHelper.fromBlockState(world.getBlockState(pos.add(i,j,k))));
+                            list.add(block);
                         }
                     }
                 }
